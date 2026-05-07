@@ -7,6 +7,7 @@ const port = process.env.PORT;
 
 // server APIs
 const serverRoutes = require("./api/v1/routes/index.route");
+serverRoutes(app);
 
 database.connect();
 
