@@ -5,29 +5,11 @@ const database = require("./config/database");
 const app = express();
 const port = process.env.PORT;
 
-const Task = require("./models/task.model");
+// server APIs
+const serverRoutes = require("./api/v1/routes/index.route");
 
 database.connect();
 
-app.get("/tasks", async (req, res) => {
-    const tasks = await Task.find({
-        deleted: false,
-    })
-
-    res.json(tasks);
-});
-
-app.get("/tasks/detail/:id", async (req, res) => {
-    const id = req.params.id;
-
-    const task = await Task.findOne({
-        _id: id,
-        deleted: false
-    })
-
-    res.json(task);
-
-})
 
 app.listen(port, () => {
     console.log(`App listening on port ${port}`);
