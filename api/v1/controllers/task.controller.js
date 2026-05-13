@@ -5,6 +5,8 @@ module.exports.index = async (req, res) => {
     const tasks = await Task.find({
         deleted: false,
     })
+
+    res.json(tasks);
 }
 
 // [GET] /api/v1/tasks/detail/:id 
